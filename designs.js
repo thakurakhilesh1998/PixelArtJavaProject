@@ -13,39 +13,39 @@ tabel according to that data
 */
 
 function makeGrid(e) {
-  e.preventDefault();
-  const height = document.getElementById("inputHeight").value;
-  const width = document.getElementById("inputWidth").value;
-  if (table.rows.length == 0) {
-    createTable(width, height);
-  } else {
-    let tabelRows = table.rows.length;
-    while (tabelRows > -1) {
-      table.deleteRow(tabelRows - 1);
-      tabelRows--;
+    e.preventDefault();
+    const height = document.getElementById("inputHeight").value;
+    const width = document.getElementById("inputWidth").value;
+    if (table.rows.length == 0) {
+        createTable(width, height);
+    } else {
+        let tabelRows = table.rows.length;
+        while (tabelRows > -1) {
+            table.deleteRow(tabelRows - 1);
+            tabelRows--;
+        }
+        createTable(width, height);
     }
-    createTable(width, height);
-  }
 }
 
 //function to create the table
 
 function createTable(width, height) {
-  for (let rows = 0; rows < height; rows++) {
-    const newRow = table.insertRow();
-    for (let columns = 0; columns < width; columns++) {
-      newRow.insertCell();
+    for (let rows = 0; rows < height; rows++) {
+        const newRow = table.insertRow();
+        for (let columns = 0; columns < width; columns++) {
+            newRow.insertCell();
+        }
     }
-  }
 
-  /*function to add listener to the table columns so
-that user click on any table cell the color of the cell will change
-*/
+    /*function to add listener to the table columns so
+  that user click on any table cell the color of the cell will change
+  */
 
-  document.querySelectorAll("#pixelCanvas td").forEach((e) =>
-    e.addEventListener("click", function () {
-      const color = document.getElementById("colorPicker").value;
-      e.style.background = color;
-    })
-  );
+    document.querySelectorAll("#pixelCanvas td").forEach((e) =>
+        e.addEventListener("click", function () {
+            const color = document.getElementById("colorPicker").value;
+            e.style.background = color;
+        })
+    );
 }
